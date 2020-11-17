@@ -11,10 +11,8 @@ public class StatsService {
 
     public long calculateAverageMonthlySales (long [] sales) {
         long numberOfMonths = sales.length;
-        long sum = 0;
-        for (long sale : sales){
-            sum += sale;
-        }
+        long sum = calculateSumOfAllSales(sales);
+
         return sum/numberOfMonths;
     }
 
@@ -37,7 +35,7 @@ public class StatsService {
         long currentMonthNumber = 1;
         long minSale = sales[0];
         for (long sale : sales) {
-            if (minSale > sale) {
+            if (minSale >= sale) {
                 minSale = sale;
                 monthNumber = currentMonthNumber;
             }
